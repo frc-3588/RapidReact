@@ -72,6 +72,9 @@ public class Elevator extends SubsystemBase {
 
     private Level elevatorState;
 
+    private boolean ballWantsToComeIn;
+
+
     /**
     *
     */
@@ -83,6 +86,7 @@ public class Elevator extends SubsystemBase {
         lowerEncoder.setDistancePerPulse(1.0 / 360.0 * 2.0 * Math.PI * 1.5);
 
         elevatorState = Level.START_LEVEL;
+        ballWantsToComeIn = false; 
 
         entryMotor = new CANSparkMax(0, MotorType.kBrushless);
         exitMotor = new CANSparkMax(1, MotorType.kBrushless);
@@ -154,6 +158,15 @@ public class Elevator extends SubsystemBase {
 
         }
 
+        if(ballWantsToComeIn){
+            if(elevatorState==Level.FIRST_LEVEL){
+                lowerPIDcontroller.setGoal(kToEndOfBelt);
+                upperPIDcontroller.setGoal(kToEndOfBelt);
+            }
+            else if(elevatorState==Level.SECOND_LEVEL){
+                lowerPIDcontroller.setGoal(kToEndOfBelt);
+            }
+        }
     
     }
 
