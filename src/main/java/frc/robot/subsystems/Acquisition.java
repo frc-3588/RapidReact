@@ -97,7 +97,7 @@ public class Acquisition extends SubsystemBase {
         }
     }
 
-    public void setAngleMotor(){
+    public void setAngleMotorPID(){
         angleMotor.set(m_controller.calculate(m_encoder.getDistance()));
     }
 
@@ -109,5 +109,9 @@ public class Acquisition extends SubsystemBase {
     public void setAcquisitionMotor(double power){
         acquisitionMotor.set(power); 
 
+    }
+
+    public void setAngleMotorManual(double power){
+        angleMotor.set(power);
     }
 }
