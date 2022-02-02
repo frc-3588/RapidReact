@@ -105,4 +105,9 @@ public class Acquisition extends SubsystemBase {
     public double getMotorPower(){
         return angleMotor.get();
     }
+
+    public void setAcquisitionMotor(double power){
+        acquisitionMotor.set(power); 
+
+    }
 }

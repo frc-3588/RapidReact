@@ -31,7 +31,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: CollectBalls}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -87,7 +87,7 @@ Children:
         Interruptible: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Interruptible, validators: null, value: true}
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: driverStation}
+          name: Joystick, validators: null, value: operatorController}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
@@ -124,7 +124,7 @@ Children:
         Interruptible: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Interruptible, validators: null, value: true}
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: driverStation}
+          name: Joystick, validators: null, value: operatorController}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
@@ -159,7 +159,7 @@ Children:
         Interruptible: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Interruptible, validators: null, value: true}
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: driverStation}
+          name: Joystick, validators: null, value: operatorController}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
@@ -194,7 +194,7 @@ Children:
         Interruptible: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Interruptible, validators: null, value: true}
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: driverStation}
+          name: Joystick, validators: null, value: operatorController}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
@@ -232,7 +232,7 @@ Children:
         validators: [Joystick]
         value: '2'
     Base: Xbox Controller
-    Name: driverStation
+    Name: operatorController
   Properties: {}
   Base: OI
   Name: Operator Interface
