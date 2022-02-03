@@ -55,8 +55,8 @@ public class Drive extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_chassis.setMotorPower(RobotContainer.getInstance().getleftJoystick().getY() * -0.5,
-                RobotContainer.getInstance().getrightJoystick().getY() * -0.5);
+        m_chassis.setMotorPower(RobotContainer.getInstance().getleftJoystick().getRawAxis(1) * -0.5,
+                RobotContainer.getInstance().getrightJoystick().getRawAxis(1) * -0.5);
     }
 
     // Called once the command ends or is interrupted.
