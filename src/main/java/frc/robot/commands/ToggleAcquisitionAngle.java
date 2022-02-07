@@ -73,11 +73,7 @@ public class ToggleAcquisitionAngle extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        if (Math.abs(m_acquisition.getAngleMotorPosition() - m_acquisition.getPositionGoal()) <= 0.05) {
-            return true;
-        } else {
-            return false;
-        }
+        return m_acquisition.atPositionGoal();
     }
 
     @Override

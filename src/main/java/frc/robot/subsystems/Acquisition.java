@@ -119,6 +119,14 @@ public class Acquisition extends SubsystemBase {
 
     }
 
+    public boolean atPositionGoal(){
+        return Math.abs(getAngleMotorPosition() - getPositionGoal()) <= 0.05;
+    }
+
+    public PIDController getController(){
+        return m_controller;
+    }
+
     public void setAngleMotorManual(double power) {
         angleMotor.set(power);
     }
