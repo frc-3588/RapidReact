@@ -58,11 +58,17 @@ public class ActivateElevator extends CommandBase {
     public void execute() {
         m_elevator.setEntryMotorPower();
         m_elevator.setExitMotorPower();
+        m_elevator.printCurrentPosition();
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        m_elevator.setEntryMotorPowerManual(0.0);
+        m_elevator.setExitMotorPowerManual(0.0);
+
+        System.out.println("///////////////END////////////////");
+        m_elevator.printCurrentPosition();
     }
 
     // Returns true when the command should end.
