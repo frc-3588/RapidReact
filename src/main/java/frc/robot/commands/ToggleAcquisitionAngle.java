@@ -51,7 +51,6 @@ public class ToggleAcquisitionAngle extends CommandBase {
     @Override
     public void initialize() {
         m_acquisition.setGoal();
-        // m_acquisition.reset();
     }
 
     // Called every time the scheduler runs while the command is scheduled.

@@ -99,12 +99,12 @@ public class Acquisition extends SubsystemBase {
     public void setGoal() {
         if (extensionState == Extension.EXTENDED) {
             m_controller.setSetpoint(Extension.NOT_EXTENDED.getValue());
-            positionGoal = Extension.NOT_EXTENDED.getValue();
+            // positionGoal = Extension.NOT_EXTENDED.getValue();
             // direction = kReverse;
             extensionState = Extension.NOT_EXTENDED;
         } else if (extensionState == Extension.NOT_EXTENDED) {
             m_controller.setSetpoint(Extension.EXTENDED.getValue());
-            positionGoal = Extension.EXTENDED.getValue();
+            // positionGoal = Extension.EXTENDED.getValue();
             // direction = kForward;
             extensionState = Extension.EXTENDED;
         }
@@ -131,13 +131,13 @@ public class Acquisition extends SubsystemBase {
         return angleMotor.getEncoder().getPosition();
     }
 
-    public void setPositionGoal(double position) {
-        positionGoal = position;
-    }
+    // public void setPositionGoal(double position) {
+    //     positionGoal = position;
+    // }
 
-    public double getPositionGoal(){
-        return positionGoal;
-    }
+    // public double getPositionGoal(){
+    //     return positionGoal;
+    // }
     
     public void reset() {
         m_encoder.setPosition(0);
