@@ -54,7 +54,7 @@ public class ActivateLowerElevatorManual extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_elevator.setEntryMotorPowerManual();
+        m_elevator.setEntryMotorPower();
     }
 
     // Called once the command ends or is interrupted.

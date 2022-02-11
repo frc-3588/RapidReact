@@ -74,13 +74,7 @@ public class ActivateElevator extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        if (Math.abs(m_elevator.getEntryMotorPower()) < m_elevator.kMotorStopped
-                && Math.abs(m_elevator.getExitMotorPower()) < m_elevator.kMotorStopped) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return m_elevator.atExitSetPoint() && m_elevator.atEntrySetPoint();
     }
 
     @Override
