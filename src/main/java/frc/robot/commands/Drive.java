@@ -56,7 +56,12 @@ public class Drive extends CommandBase {
     @Override
     public void execute() {
         m_chassis.setMotorPower(RobotContainer.getInstance().getleftJoystick().getRawAxis(1) * -0.5,
-                RobotContainer.getInstance().getrightJoystick().getRawAxis(1) * -0.5);
+                RobotContainer.getInstance().getleftJoystick().getRawAxis(3) * -0.5);
+
+                // m_chassis.setLeftFrontMotorPower(0.5);
+                // m_chassis.setRightFrontMotorPower(0.5);
+                // m_chassis.setLeftRearMotorPower(0.5);
+                // m_chassis.setRightRearMotorPower(0.5);
     }
 
     // Called once the command ends or is interrupted.
