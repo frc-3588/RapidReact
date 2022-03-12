@@ -50,6 +50,7 @@ public class ActivateElevator extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        m_elevator.reset();
         m_elevator.setGoal();
     }
 
@@ -74,7 +75,7 @@ public class ActivateElevator extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return m_elevator.atExitSetPoint() && m_elevator.atEntrySetPoint();
+        return m_elevator.atEntrySetPoint() && m_elevator.atExitSetPoint();
     }
 
     @Override

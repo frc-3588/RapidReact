@@ -66,7 +66,6 @@ public class ToggleAcquisitionAngle extends CommandBase {
         m_acquisition.setAngleMotorManual(0.0);
         System.out.println("////////////////END//////////////////");
         m_acquisition.printCurrentPosition();
-
     }
 
     // Returns true when the command should end.
