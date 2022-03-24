@@ -56,15 +56,21 @@ public class Drive extends CommandBase {
     @Override
     public void execute() {
         //arcade drive
-        m_chassis.setArcadePower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.8, RobotContainer.getInstance().getjoystick().getRawAxis(2)*0.8);
+        //m_chassis.setArcadePower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.5, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.5);
 
         //tank drive
-        // m_chassis.setTankPower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.8, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.8);
+        m_chassis.setTankPower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.6, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.6);
 
         //if all else fails, use this code (homemade applesauce :p)
-        // m_chassis.setMotorPower(RobotContainer.getInstance().getjoystick().getRawAxis(1) * -0.5,
-        //         RobotContainer.getInstance().getjoystick().getRawAxis(3) * -0.5);
+        // m_chassis.setMotorPower(RobotContainer.getInstance().getjoystick().getRawAxis(1) * 1.0,
+        //        RobotContainer.getInstance().getjoystick().getRawAxis(3) * 1.0);
 
+        //homemade applesauce 2
+        // m_chassis.setMotorPower(RobotContainer.getInstance().getjoystick().getY() * -0.5,
+        // RobotContainer.getInstance().getjoystick().getX() * -0.5);
+
+        //experimental apple sauce
+        //m_chassis.setMotorPower(0.5, 0.5);
     }
 
     // Called once the command ends or is interrupted.

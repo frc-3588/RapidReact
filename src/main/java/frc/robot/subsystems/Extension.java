@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 public enum Extension {
-    EXTENDED (20),
+    EXTENDED (10),
     NOT_EXTENDED(0)
     ; 
 

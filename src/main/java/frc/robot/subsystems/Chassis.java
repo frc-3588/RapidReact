@@ -58,25 +58,42 @@ private MotorControllerGroup m_left;
     rightFront = new CANSparkMax(5, MotorType.kBrushless);
     leftFront = new CANSparkMax(3, MotorType.kBrushless); 
     rightRear = new CANSparkMax(1, MotorType.kBrushless);
-    leftRear = new CANSparkMax(4, MotorType.kBrushless);                                                                                                 
+    leftRear = new CANSparkMax(4, MotorType.kBrushless);   
+    
+    // ensures sparks start at default config every time the robot is on, must be declared after constructors
+    rightFront.restoreFactoryDefaults();
+    rightRear.restoreFactoryDefaults();
+    leftFront.restoreFactoryDefaults();
+    leftRear.restoreFactoryDefaults();
 
     m_right = new MotorControllerGroup(rightFront, rightRear);
     m_left = new MotorControllerGroup(leftFront, leftRear);
 
     differentialDrive = new DifferentialDrive(m_left, m_right);
-    differentialDrive.setSafetyEnabled(true);
+    // .setSafetyEnabled(false): fixed skipping in drive train - smooth sailin drive
+    differentialDrive.setSafetyEnabled(false);
     differentialDrive.setExpiration(0.1);
     differentialDrive.setMaxOutput(1.0);
-
+    
+    // inverts
     rightFront.setInverted(true);
-    leftRear.setInverted(true);
+    rightRear.setInverted(true);
+    //leftRear.setInverted(true);
+
+    rightFront.setOpenLoopRampRate(0.3);
+    rightRear.setOpenLoopRampRate(0.3);
+    leftFront.setOpenLoopRampRate(0.3);
+    leftRear.setOpenLoopRampRate(0.3);
 
     }
 
     @Override
     public void periodic() {
-        // This method will be called once per scheduler run
-
+        //testing in periodic is the same as testing with command
+        /**leftFront.set(1);
+        leftRear.set(1);
+        rightRear.set(1);
+        rightFront.set(1);**/
     }
 
     @Override
