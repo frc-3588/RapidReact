@@ -31,6 +31,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMax;
 
+//comment out below if too bulky
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxRelativeEncoder;
+
 /**
  *
  */
@@ -50,6 +54,16 @@ public class Elevator extends SubsystemBase {
 
     // belong to the exit motor
     private CANSparkMax upperMotor;
+
+
+    //used for encoders for both motors (If interferes with normal code, comment out)
+    public RelativeEncoder lowerEncoder, upperEncoder;
+    public PIDController lowerController, upperController;
+
+    //Variables for PID
+    private final double kp = 0.01;
+    private final double ki = 0.0;
+    private final double kd = 0.0;
 
     /**
     *
@@ -72,6 +86,10 @@ public class Elevator extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
+        //periodically updates the positioning of the robot
+        //if interfering with normal code, comment out
+        lowerMotor.set(lowerController.calculate(lowerEncoder.getPosition()));
+        upperMotor.set(upperController.calculate(upperEncoder.getPosition()));
 
     }
 
@@ -90,6 +108,23 @@ public class Elevator extends SubsystemBase {
 
     public void setExitMotorPowerManual(double power) {
         upperMotor.set(power);
+    }
+
+
+    public void setLowerMotorPos(double positionGoal){
+        lowerController.setSetpoint(positionGoal);
+        lowerMotor.set(lowerController.calculate(lowerEncoder.getPosition()));
+    }
+    public void setUpperMotorPos(double positionGoal){
+        upperController.setSetpoint(positionGoal);
+        upperMotor.set(upperController.calculate(upperEncoder.getPosition()));
+    }
+
+    public boolean lowerMotorAtPosGoal(){
+        return lowerController.atSetpoint();
+    }
+    public boolean upperMotorAtPosGoal(){
+        return upperController.atSetpoint();
     }
 
 }

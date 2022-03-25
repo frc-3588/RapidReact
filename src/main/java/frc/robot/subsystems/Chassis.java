@@ -27,6 +27,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+//comment out if too bulky
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxRelativeEncoder;
+
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
+
 /**
  *
  */
@@ -45,6 +54,15 @@ private MotorControllerGroup m_left;
     private CANSparkMax leftFront;
     private CANSparkMax rightRear;
     private CANSparkMax leftRear;
+
+    public RelativeEncoder rfEncoder, lfEncoder, rrEncoder, lrEncoder;
+    public PIDController rfController, lfController, rrController, lrController;
+
+    private final double kp = 0.01;
+    private final double ki = 0.0;
+    private final double kd = 0.0;
+
+    public WaitCommand wait;
 
     private DifferentialDrive differentialDrive;
 
@@ -85,6 +103,22 @@ private MotorControllerGroup m_left;
     leftFront.setOpenLoopRampRate(0.3);
     leftRear.setOpenLoopRampRate(0.3);
 
+    //sets encoder positions to 0.0 and enables PID controller for sensor
+    //Comment out if interfering with original code
+    rfEncoder = rightFront.getEncoder();
+    rfEncoder.setPosition(0.0);
+    lfEncoder = leftFront.getEncoder();
+    lfEncoder.setPosition(0.0);
+    rrEncoder = rightRear.getEncoder();
+    rrEncoder.setPosition(0.0);
+    lrEncoder = leftRear.getEncoder();
+    lrEncoder.setPosition(0.0);
+
+    rfController = new PIDController(kp, ki, kd);
+    lfController = new PIDController(kp, ki, kd);
+    rrController = new PIDController(kp, ki, kd);
+    lrController = new PIDController(kp, ki, kd);
+
     }
 
     @Override
@@ -94,6 +128,14 @@ private MotorControllerGroup m_left;
         leftRear.set(1);
         rightRear.set(1);
         rightFront.set(1);**/
+
+        //periodically updates the positioning of the robot
+        //if interfering with normal code, comment out
+        rightFront.set(rfController.calculate(rfEncoder.getPosition())*0.5);
+        leftFront.set(lfController.calculate(lfEncoder.getPosition())*0.5);
+        rightRear.set(rrController.calculate(rrEncoder.getPosition())*0.5);
+        leftRear.set(lrController.calculate(lrEncoder.getPosition())*0.5);
+        
     }
 
     @Override
@@ -128,6 +170,42 @@ private MotorControllerGroup m_left;
     }
     public void setLeftRearMotorPower(double power){
         leftRear.set(power);
+    }
+
+    //if below interferes with code, comment out
+    public void setRightFrontMotorPos(double positionGoal){
+        rfController.setSetpoint(positionGoal);
+        rightFront.set(rfController.calculate(rfEncoder.getPosition())*0.5);
+    }
+    public void setLeftFrontMotorPos(double positionGoal){
+        lfController.setSetpoint(positionGoal);
+        leftFront.set(lfController.calculate(lfEncoder.getPosition())*0.5);
+    }
+    public void setRightRearMotorPos(double positionGoal){
+        rrController.setSetpoint(positionGoal);
+        rightRear.set(rrController.calculate(rrEncoder.getPosition())*0.5);
+    }
+    public void setLeftRearMotorPos(double positionGoal){
+        lrController.setSetpoint(positionGoal);
+        leftRear.set(lrController.calculate(lrEncoder.getPosition())*0.5);
+    }
+
+    public boolean rfAtPosGoal(){
+        return rfController.atSetpoint();
+    }
+    public boolean lfAtPosGoal(){
+        return rfController.atSetpoint();
+    }
+    public boolean rrAtPosGoal(){
+        return rfController.atSetpoint();
+    }
+    public boolean lrAtPosGoal(){
+        return rfController.atSetpoint();
+    }
+
+    public void waitSeconds(double seconds){
+        wait = new WaitCommand(seconds);
+        wait.initialize();
     }
 
 }
