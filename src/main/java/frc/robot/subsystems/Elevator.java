@@ -81,6 +81,14 @@ public class Elevator extends SubsystemBase {
         // ensures sparks start at default config every time the robot is on, must be declared after constructors
         lowerMotor.restoreFactoryDefaults();
         upperMotor.restoreFactoryDefaults();
+
+        lowerEncoder = lowerMotor.getEncoder();
+        lowerEncoder.setPosition(0.0);
+        upperEncoder = upperMotor.getEncoder();
+        upperEncoder.setPosition(0.0);
+
+        lowerController = new PIDController(kp, ki, kd);
+        upperController = new PIDController(kp, ki, kd);
     }
 
     @Override
