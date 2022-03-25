@@ -55,7 +55,7 @@ public class AngleCommand extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_acquisition.setAngleMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1) * 0.5);
+        m_acquisition.setAngleMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1) * 0.2);
         //press the right bumper button and use the left joystick fwd/backwds motion to control angle motor
     }
 

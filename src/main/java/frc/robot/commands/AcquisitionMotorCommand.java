@@ -55,8 +55,8 @@ public class AcquisitionMotorCommand extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_acquisition.setAcquisitionMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1)*0.2);
-        m_acquisition.setAngleMotor(0.2);
+        m_acquisition.setAcquisitionMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1)*0.25);
+        m_acquisition.setAngleMotor(0.1);
     }
 
     // Called once the command ends or is interrupted.

@@ -59,7 +59,7 @@ public class Drive extends CommandBase {
         //m_chassis.setArcadePower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.5, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.5);
 
         //tank drive
-        m_chassis.setTankPower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.6, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.6);
+        m_chassis.setTankPower(RobotContainer.getInstance().getjoystick().getRawAxis(1)*0.7, RobotContainer.getInstance().getjoystick().getRawAxis(3)*0.7);
 
         //if all else fails, use this code (homemade applesauce :p)
         // m_chassis.setMotorPower(RobotContainer.getInstance().getjoystick().getRawAxis(1) * 1.0,
