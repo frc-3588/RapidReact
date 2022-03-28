@@ -105,19 +105,20 @@ private MotorControllerGroup m_left;
 
     //sets encoder positions to 0.0 and enables PID controller for sensor
     //Comment out if interfering with original code
-    rfEncoder = rightFront.getEncoder();
-    rfEncoder.setPosition(0.0);
-    lfEncoder = leftFront.getEncoder();
-    lfEncoder.setPosition(0.0);
-    rrEncoder = rightRear.getEncoder();
-    rrEncoder.setPosition(0.0);
-    lrEncoder = leftRear.getEncoder();
-    lrEncoder.setPosition(0.0);
+    
+    // rfEncoder = rightFront.getEncoder();
+    // rfEncoder.setPosition(0.0);
+    // lfEncoder = leftFront.getEncoder();
+    // lfEncoder.setPosition(0.0);
+    // rrEncoder = rightRear.getEncoder();
+    // rrEncoder.setPosition(0.0);
+    // lrEncoder = leftRear.getEncoder();
+    // lrEncoder.setPosition(0.0);
 
-    rfController = new PIDController(kp, ki, kd);
-    lfController = new PIDController(kp, ki, kd);
-    rrController = new PIDController(kp, ki, kd);
-    lrController = new PIDController(kp, ki, kd);
+    // rfController = new PIDController(kp, ki, kd);
+    // lfController = new PIDController(kp, ki, kd);
+    // rrController = new PIDController(kp, ki, kd);
+    // lrController = new PIDController(kp, ki, kd);
 
     }
 
@@ -131,10 +132,10 @@ private MotorControllerGroup m_left;
 
         //periodically updates the positioning of the robot
         //if interfering with normal code, comment out
-        rightFront.set(rfController.calculate(rfEncoder.getPosition())*0.5);
-        leftFront.set(lfController.calculate(lfEncoder.getPosition())*0.5);
-        rightRear.set(rrController.calculate(rrEncoder.getPosition())*0.5);
-        leftRear.set(lrController.calculate(lrEncoder.getPosition())*0.5);
+        // rightFront.set(rfController.calculate(rfEncoder.getPosition())*0.5);
+        // leftFront.set(lfController.calculate(lfEncoder.getPosition())*0.5);
+        // rightRear.set(rrController.calculate(rrEncoder.getPosition())*0.5);
+        // leftRear.set(lrController.calculate(lrEncoder.getPosition())*0.5);
         
     }
 
