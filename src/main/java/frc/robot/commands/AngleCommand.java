@@ -55,19 +55,21 @@ public class AngleCommand extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        //m_acquisition.setAngleMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1) * 0.2);
+        m_acquisition.setAngleMotor(0.1);
+        // m_acquisition.setAngleMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1) * 0.2);
         //press the right bumper button and use the left joystick fwd/backwds motion to control angle motor
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        m_acquisition.setAngleMotor(0.0);
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override

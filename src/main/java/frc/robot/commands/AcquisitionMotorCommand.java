@@ -56,7 +56,7 @@ public class AcquisitionMotorCommand extends CommandBase {
     @Override
     public void execute() {
         m_acquisition.setAcquisitionMotor(RobotContainer.getInstance().getoperatorController().getRawAxis(1)*0.25);
-        //m_acquisition.setAngleMotor(0.1);
+        // m_acquisition.setAngleMotor(0.1); ask joh and aren why?
     }
 
     // Called once the command ends or is interrupted.
